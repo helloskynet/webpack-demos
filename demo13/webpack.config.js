@@ -1,17 +1,19 @@
-var webpack = require('webpack');
 
 module.exports = {
   entry: {
     app: './main.js',
     vendor: ['jquery'],
   },
-  output: {
-    filename: 'bundle.js'
-  },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
+  optimization: {
+    splitChunks: {
       name: 'vendor',
-      filename: 'vendor.js'
-    })
-  ]
+      // (the commons chunk name)
+      filename: 'vendor.js',
+      // (the filename of the commons chunk)
+      chunks: 'all',
+    },
+  },
+  output: {
+    filename: 'bundle.js',
+  },
 };

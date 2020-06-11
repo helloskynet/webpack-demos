@@ -11,7 +11,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['es2015', 'react']
+            presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
       },
@@ -20,6 +20,6 @@ module.exports = {
   externals: {
     // require('data') is external and available
     //  on the global var data
-    'data': 'data'
+    'data': 'data'  // 这个字段会暴露到window上 可以使用 window.data 访问
   }
 };

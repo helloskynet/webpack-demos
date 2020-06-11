@@ -1,3 +1,27 @@
+
+升级到webpack4，升级所有依赖升级到最新，
+
+## 修改部分
+
+1. webpack的输出文件夹不再默认是根目录，而是默认输出到dist文件夹下，可以通过 config.output.path 来指定输出目录
+
+2. webpack的默认模式的production，此时会默认对代码进行压缩，同时会在命令行输出警告，需要指定模式，config.mode {production | development | none}
+
+3. demo07 babel7发生较大变化，插件命名统一。例如babel-core 改为@babel/core,babel-preset-es2015系列被放弃，统一使用@babel/preset-env,[可以查看](https://blog.csdn.net/qq_15601471/article/details/99690530)
+
+4. demo05 url-loader 和 file-loader 默认导出esModule。想要支持CommonJS需要通过配置关闭esModule。
+
+5. demo07 webpack压缩代码的时候不再使用uglifyjs-webpack-plugin转而使用terser-webpack-plugin，因为uglifyjs引用的uglifyes不再更新而uglifyjs又不支持es6+，所以使用terser，它是uglifyes的一个分支。它兼容uglifyjs@3和uglifyes的API和CLI
+
+6. demo08 open-browser-webpack-plugin 这个插件太老了，也没人更新，所有者好像已经放弃它了 它的功能也只是打开浏览器而已  webpack-dev-server --open 就挺好用
+
+7. demo12  不再使用webpack.optimize.CommonsChunkPlugin插件提取公共代码，可以通过 config.optimization.splitChunks 直接配置。
+
+8. demo14 不推荐将react 直接加到 body上。
+
+以下是原文
+---
+
 This repo is a collection of simple demos of Webpack.
 
 These demos are purposely written in a simple and clear style. You will find no difficulty in following them to learn the powerful tool.
